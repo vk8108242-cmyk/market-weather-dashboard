@@ -1,0 +1,35 @@
+name: Update Market Weather
+
+on:
+  schedule:
+    # Runs at 11:00 UTC (16:30 IST) every Monday–Friday
+    - cron: '0 11 * * 1-5'
+  workflow_dispatch:   # Allows manual run from the Actions tab
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install yfinance pandas requests beautifulsoup4
+
+      - name: Run Market Weather fetcher
+        run: python fetch_market_weather.py
+
+      - name: Commit and push updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update Market Weather data $(date -u +%Y-%m-%d)"
+          git push
