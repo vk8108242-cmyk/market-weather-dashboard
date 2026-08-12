@@ -1,12 +1,12 @@
 {
-  "lastUpdated": "11 August 2026 11:35 IST",
-  "dataAsOf": "11 August 2026",
+  "lastUpdated": "12 August 2026 11:36 IST",
+  "dataAsOf": "12 August 2026",
   "score": 8.2,
   "status": "Favourable",
   "interpretation": "Resilient mid-cap leadership, contained volatility and stabilising institutional flows produce a moderately constructive backdrop. Large-cap index still faces longer-term resistance below the 200-DMA; monitor the 24,500–24,700 zone closely.",
   "takeaways": [
     "Mid-cap trend remains the strongest component",
-    "India VIX at 11.85 – supportive of risk appetite",
+    "India VIX at 11.69 – supportive of risk appetite",
     "Nifty 50 still below its 200-day moving average",
     "FII 5-day flow currently constructive (approximate)",
     "Key watch levels: 24,500 support / 24,700 resistance"
@@ -17,7 +17,7 @@
       "title": "Nifty 50 Trend (50 / 200 DMA)",
       "status": "Neutral / Mild +",
       "statusClass": "neutral",
-      "metrics": "Price 24,471.70  ·  50-DMA 24,026.26  ·  200-DMA 24,756.86",
+      "metrics": "Price 24,435.95  ·  50-DMA 24,002.23  ·  200-DMA 24,770.75",
       "description": "Above 50-DMA. Below 200-DMA. Death Cross active."
     },
     {
@@ -25,7 +25,7 @@
       "title": "Nifty Midcap 50 Trend",
       "status": "Strongly Positive",
       "statusClass": "positive",
-      "metrics": "Price 18,312.35  ·  50-DMA 17,763.68  ·  200-DMA 17,100.59",
+      "metrics": "Price 18,355.95  ·  50-DMA 17,744.57  ·  200-DMA 17,087.86",
       "description": "Above both key DMAs. Golden Cross intact."
     },
     {
@@ -33,7 +33,7 @@
       "title": "India VIX Level",
       "status": "Positive",
       "statusClass": "positive",
-      "metrics": "Close 11.85",
+      "metrics": "Close 11.69",
       "description": "Low readings support risk-taking; sustained rise above 15–16 would turn neutral/cautious."
     },
     {
@@ -46,13 +46,13 @@
     }
   ],
   "raw": {
-    "nifty_price": 24471.69921875,
-    "nifty_50dma": 24026.2599609375,
-    "nifty_200dma": 24756.864794921876,
-    "mid_price": 18312.349609375,
-    "mid_50dma": 17763.6840234375,
-    "mid_200dma": 17100.5894921875,
-    "vix": 11.854999542236328,
+    "nifty_price": 24435.94921875,
+    "nifty_50dma": 24002.2349609375,
+    "nifty_200dma": 24770.7510546875,
+    "mid_price": 18355.94921875,
+    "mid_50dma": 17744.5740234375,
+    "mid_200dma": 17087.855244140625,
+    "vix": 11.6899995803833,
     "fii_5d_approx": 2900
   }
 }
