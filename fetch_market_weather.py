@@ -3,7 +3,8 @@
 Market Weather Dashboard – Automatic Data Fetcher
 Fetches Nifty 50, Midcap, India VIX historical series,
 calculates 50/200 DMAs, estimates FII component,
-computes composite score, and writes data.json
+computes composite score, maintains daily score history,
+and writes data.json
 """
 
 import json
@@ -15,9 +16,9 @@ warnings.filterwarnings("ignore")
 import yfinance as yf
 import pandas as pd
 import requests
-from bs4 import BeautifulSoup
 
 OUTPUT_PATH = Path(__file__).parent / "data.json"
+HISTORY_MAX_DAYS = 60  # keep last N daily scores
 
 
 def fetch_index_series(ticker: str, period: str = "1y") -> pd.Series:
@@ -26,7 +27,6 @@ def fetch_index_series(ticker: str, period: str = "1y") -> pd.Series:
         data = yf.download(ticker, period=period, progress=False, auto_adjust=True)
         if data.empty:
             return pd.Series(dtype=float)
-        # Handle multi-level columns from recent yfinance
         if isinstance(data.columns, pd.MultiIndex):
             close = data["Close"].iloc[:, 0]
         else:
@@ -37,22 +37,17 @@ def fetch_index_series(ticker: str, period: str = "1y") -> pd.Series:
         return pd.Series(dtype=float)
 
 
-def calc_dma(series: pd.Series, window: int) -> float | None:
+def calc_dma(series: pd.Series, window: int):
     if len(series) < window:
         return None
     return float(series.rolling(window).mean().iloc[-1])
 
 
-def score_nifty_trend(price: float, dma50: float | None, dma200: float | None) -> tuple[str, str, float]:
-    """
-    Returns (status_label, status_class, points 0-10)
-    """
+def score_nifty_trend(price: float, dma50, dma200):
     if dma50 is None or dma200 is None:
         return "Data unavailable", "neutral", 5.0
-
     above50 = price > dma50
     above200 = price > dma200
-
     if above50 and above200:
         return "Bullish", "positive", 9.0
     elif above50 and not above200:
@@ -63,14 +58,12 @@ def score_nifty_trend(price: float, dma50: float | None, dma200: float | None) -
         return "Bearish", "negative", 2.5
 
 
-def score_midcap_trend(price: float, dma50: float | None, dma200: float | None) -> tuple[str, str, float]:
+def score_midcap_trend(price: float, dma50, dma200):
     if dma50 is None or dma200 is None:
         return "Data unavailable", "neutral", 5.0
-
     above50 = price > dma50
     above200 = price > dma200
     golden = dma50 > dma200
-
     if above50 and above200 and golden:
         return "Strongly Positive", "positive", 9.5
     elif above50 and above200:
@@ -81,7 +74,7 @@ def score_midcap_trend(price: float, dma50: float | None, dma200: float | None) 
         return "Negative", "negative", 3.0
 
 
-def score_vix(vix: float) -> tuple[str, str, float]:
+def score_vix(vix: float):
     if vix < 13:
         return "Positive", "positive", 8.5
     elif vix < 16:
@@ -92,8 +85,7 @@ def score_vix(vix: float) -> tuple[str, str, float]:
         return "High Risk", "negative", 2.0
 
 
-def score_fii(net_cr: float | None) -> tuple[str, str, float]:
-    """Rough scoring on 5-day cumulative net (₹ Cr)."""
+def score_fii(net_cr):
     if net_cr is None:
         return "Data unavailable", "neutral", 5.0
     if net_cr > 2000:
@@ -108,27 +100,29 @@ def score_fii(net_cr: float | None) -> tuple[str, str, float]:
         return "Negative", "negative", 2.0
 
 
-def try_fetch_fii_5day() -> float | None:
-    """
-    Attempt to scrape recent FII net from public pages.
-    Returns approximate 5-day cumulative net in ₹ Crore, or None.
-    """
-    # Many public sites change structure frequently.
-    # This is a best-effort attempt; failure is handled gracefully.
+def try_fetch_fii_5day():
+    """Best-effort; returns None when scrape is unavailable."""
     try:
-        # Example: try a known public summary page (may break over time)
         url = "https://www.moneycontrol.com/stocks/marketstats/fii_dii_activity/index.php"
-        headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
-        }
+        headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
         r = requests.get(url, headers=headers, timeout=12)
         if r.status_code != 200:
             return None
-        # Parsing logic would go here; for robustness we currently return None
-        # and rely on a conservative default when scrape fails.
-        return None
+        return None  # parsing left as future enhancement
     except Exception:
         return None
+
+
+def load_existing_history():
+    """Load previous score history from data.json if present."""
+    if not OUTPUT_PATH.exists():
+        return []
+    try:
+        with open(OUTPUT_PATH, encoding="utf-8") as f:
+            old = json.load(f)
+        return old.get("history", [])
+    except Exception:
+        return []
 
 
 def build_dashboard_data() -> dict:
@@ -139,7 +133,6 @@ def build_dashboard_data() -> dict:
     nifty_200 = calc_dma(nifty, 200)
 
     print("Fetching Nifty Midcap 50 historical series...")
-    # Using Midcap 50 (^NSEMDCP50) – reliable history on Yahoo
     mid = fetch_index_series("^NSEMDCP50", period="1y")
     mid_price = float(mid.iloc[-1]) if len(mid) else None
     mid_50 = calc_dma(mid, 50)
@@ -151,21 +144,17 @@ def build_dashboard_data() -> dict:
 
     print("Attempting FII 5-day flow...")
     fii_net = try_fetch_fii_5day()
-    # Fallback: use last known approximate range if scrape fails
-    # (In production you would integrate a reliable paid/official source)
     if fii_net is None:
-        fii_net = 2900  # last known constructive 5-day estimate
+        fii_net = 2900
         fii_note = "Approximate (last known constructive window)"
     else:
         fii_note = "Scraped provisional"
 
-    # Score each component
     n_status, n_class, n_pts = score_nifty_trend(nifty_price or 0, nifty_50, nifty_200)
     m_status, m_class, m_pts = score_midcap_trend(mid_price or 0, mid_50, mid_200)
     v_status, v_class, v_pts = score_vix(vix or 15)
     f_status, f_class, f_pts = score_fii(fii_net)
 
-    # Equal-weight composite (can be adjusted)
     composite = round((n_pts + m_pts + v_pts + f_pts) / 4, 1)
 
     if composite >= 8.0:
@@ -177,11 +166,27 @@ def build_dashboard_data() -> dict:
     else:
         overall = "Cautious"
 
-    # Human-readable metrics
     def fmt(x, decimals=2):
         if x is None:
             return "N/A"
         return f"{x:,.{decimals}f}"
+
+    # --- Daily history tracking ---
+    today_str = (nifty.index[-1].strftime("%Y-%m-%d") if len(nifty)
+                 else dt.date.today().isoformat())
+    history = load_existing_history()
+
+    # Remove any existing entry for the same date, then append today's
+    history = [h for h in history if h.get("date") != today_str]
+    history.append({
+        "date": today_str,
+        "score": composite,
+        "status": overall,
+        "nifty": nifty_price,
+        "vix": vix
+    })
+    # Keep only the most recent HISTORY_MAX_DAYS entries
+    history = sorted(history, key=lambda x: x["date"])[-HISTORY_MAX_DAYS:]
 
     data = {
         "lastUpdated": dt.datetime.now().strftime("%d %B %Y %H:%M IST"),
@@ -241,6 +246,7 @@ def build_dashboard_data() -> dict:
                 "description": "Positive net flow supports equities. Large sustained outflows would weaken this component."
             }
         ],
+        "history": history,
         "raw": {
             "nifty_price": nifty_price,
             "nifty_50dma": nifty_50,
@@ -267,6 +273,7 @@ def main():
     print(f"\nWrote {OUTPUT_PATH}")
     print(f"Composite Score : {data['score']} / 10  →  {data['status']}")
     print(f"Data as of      : {data['dataAsOf']}")
+    print(f"History entries : {len(data.get('history', []))}")
     print("Done.")
 
 
