@@ -87,6 +87,25 @@
     .badge.negative { background: rgba(239,68,68,0.15); color: var(--negative); }
     .comp-metrics { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 10px; font-variant-numeric: tabular-nums; }
     .comp-desc { font-size: 0.85rem; color: var(--text-muted); }
+    .history-section {
+      background: var(--card); border: 1px solid var(--card-border); border-radius: var(--radius);
+      padding: 20px 24px; margin-bottom: 24px; box-shadow: var(--shadow);
+    }
+    .history-section h2 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-light); margin-bottom: 14px; }
+    .history-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .history-table th {
+      text-align: left; padding: 8px 10px; color: var(--text-muted);
+      border-bottom: 1px solid var(--card-border); font-weight: 600; font-size: 0.75rem;
+      text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .history-table td { padding: 8px 10px; border-bottom: 1px solid #1f2937; }
+    .history-table tr:last-child td { border-bottom: none; }
+    .score-pill {
+      display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem;
+    }
+    .score-pill.high { background: rgba(16,185,129,0.15); color: var(--positive); }
+    .score-pill.mid  { background: rgba(245,158,11,0.15); color: var(--neutral); }
+    .score-pill.low  { background: rgba(239,68,68,0.15); color: var(--negative); }
     .methodology {
       background: var(--card); border: 1px solid var(--card-border); border-radius: var(--radius);
       padding: 20px 24px; margin-bottom: 24px;
@@ -116,7 +135,7 @@
           <div class="subtitle">Composite score from Nifty 50 trend, Midcap trend, India VIX &amp; FII flows</div>
         </div>
         <div class="meta">
-          <div><span class="live-dot"></span>Auto-refreshed data</div>
+          <div><span class="live-dot"></span>Auto-updated via GitHub Actions</div>
           <div id="lastUpdated">—</div>
           <div id="dataAsOf" style="font-size:0.8rem;">—</div>
         </div>
@@ -139,6 +158,24 @@
       <div class="section-title">Component Scorecards</div>
       <section class="components" id="componentsGrid"></section>
 
+      <section class="history-section" id="historySection" style="display:none;">
+        <h2>Score History (Daily)</h2>
+        <div style="overflow-x:auto;">
+          <table class="history-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Score</th>
+                <th>Status</th>
+                <th>Nifty</th>
+                <th>VIX</th>
+              </tr>
+            </thead>
+            <tbody id="historyBody"></tbody>
+          </table>
+        </div>
+      </section>
+
       <section class="methodology">
         <h2>How the Score is Constructed</h2>
         <div class="method-grid">
@@ -148,7 +185,7 @@
           </div>
           <div class="method-item">
             <strong>Midcap Trend</strong>
-            <span>Nifty Midcap 50 vs its own DMAs (reliable Yahoo series). Golden Cross + price above both = strongly positive.</span>
+            <span>Nifty Midcap 50 vs its own DMAs. Golden Cross + price above both = strongly positive.</span>
           </div>
           <div class="method-item">
             <strong>India VIX</strong>
@@ -156,20 +193,26 @@
           </div>
           <div class="method-item">
             <strong>FII 5-Day Flow</strong>
-            <span>Approximate cumulative net equity flow. Positive flow supports risk assets. (Best-effort; official numbers preferred.)</span>
+            <span>Approximate cumulative net equity flow. Positive flow supports risk assets.</span>
           </div>
         </div>
       </section>
 
       <footer>
         Analytical summary for informational purposes only. Not investment advice.<br>
-        Price &amp; DMA data via Yahoo Finance. FII figures are approximate when live scrape is unavailable.<br>
-        Run <code>python fetch_market_weather.py</code> to refresh. Schedule it daily for full automation.
+        Price &amp; DMA data via Yahoo Finance. FII figures are approximate when live sources are unavailable.<br>
+        Data is refreshed automatically by GitHub Actions after market close on trading days.
       </footer>
     </div>
   </div>
 
   <script>
+    function scoreClass(s) {
+      if (s >= 7.5) return "high";
+      if (s >= 5) return "mid";
+      return "low";
+    }
+
     async function loadDashboard() {
       const loading = document.getElementById("loading");
       const dash = document.getElementById("dashboard");
@@ -217,13 +260,34 @@
           grid.appendChild(card);
         });
 
+        // History table
+        const history = data.history || [];
+        if (history.length > 0) {
+          document.getElementById("historySection").style.display = "block";
+          const tbody = document.getElementById("historyBody");
+          tbody.innerHTML = "";
+          // Show newest first
+          [...history].reverse().forEach(h => {
+            const tr = document.createElement("tr");
+            const sc = h.score ?? 0;
+            tr.innerHTML = `
+              <td>${h.date || "—"}</td>
+              <td><span class="score-pill ${scoreClass(sc)}">${sc.toFixed(1)}</span></td>
+              <td>${h.status || "—"}</td>
+              <td>${h.nifty != null ? Number(h.nifty).toLocaleString("en-IN", {maximumFractionDigits: 2}) : "—"}</td>
+              <td>${h.vix != null ? Number(h.vix).toFixed(2) : "—"}</td>
+            `;
+            tbody.appendChild(tr);
+          });
+        }
+
         loading.style.display = "none";
         dash.style.display = "block";
       } catch (e) {
         loading.style.display = "none";
         errBox.style.display = "block";
         errBox.textContent = "Failed to load data: " + e.message +
-          ". Make sure data.json is in the same folder and run the Python fetcher first.";
+          ". Ensure data.json is present in the same folder as this page.";
       }
     }
 
