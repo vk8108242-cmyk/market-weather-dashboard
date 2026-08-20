@@ -1,12 +1,12 @@
 {
-  "lastUpdated": "19 August 2026 11:13 IST",
-  "dataAsOf": "19 August 2026",
-  "score": 7.4,
-  "status": "Moderately Favourable",
+  "lastUpdated": "20 August 2026 11:15 IST",
+  "dataAsOf": "20 August 2026",
+  "score": 8.2,
+  "status": "Favourable",
   "interpretation": "Resilient mid-cap leadership, contained volatility and stabilising institutional flows produce a moderately constructive backdrop. Large-cap index still faces longer-term resistance below the 200-DMA; monitor the 24,500–24,700 zone closely.",
   "takeaways": [
     "Mid-cap trend remains the strongest component",
-    "India VIX at 11.32 – supportive of risk appetite",
+    "India VIX at 10.76 – supportive of risk appetite",
     "Nifty 50 still below its 200-day moving average",
     "FII 5-day flow currently constructive (approximate)",
     "Key watch levels: 24,500 support / 24,700 resistance"
@@ -15,17 +15,17 @@
     {
       "id": "nifty50",
       "title": "Nifty 50 Trend (50 / 200 DMA)",
-      "status": "Bearish",
-      "statusClass": "negative",
-      "metrics": "Price 24,078.30  ·  50-DMA 24,139.88  ·  200-DMA 24,710.09",
-      "description": "Below 50-DMA. Below 200-DMA. Death Cross active."
+      "status": "Neutral / Mild +",
+      "statusClass": "neutral",
+      "metrics": "Price 24,231.85  ·  50-DMA 24,100.47  ·  200-DMA 24,727.21",
+      "description": "Above 50-DMA. Below 200-DMA. Death Cross active."
     },
     {
       "id": "midcap",
       "title": "Nifty Midcap 50 Trend",
       "status": "Strongly Positive",
       "statusClass": "positive",
-      "metrics": "Price 18,220.70  ·  50-DMA 17,893.70  ·  200-DMA 17,146.25",
+      "metrics": "Price 18,300.65  ·  50-DMA 17,863.83  ·  200-DMA 17,135.02",
       "description": "Above both key DMAs. Golden Cross intact."
     },
     {
@@ -33,7 +33,7 @@
       "title": "India VIX Level",
       "status": "Positive",
       "statusClass": "positive",
-      "metrics": "Close 11.32",
+      "metrics": "Close 10.76",
       "description": "Low readings support risk-taking; sustained rise above 15–16 would turn neutral/cautious."
     },
     {
@@ -80,16 +80,23 @@
       "status": "Moderately Favourable",
       "nifty": 24078.30078125,
       "vix": 11.322500228881836
+    },
+    {
+      "date": "2026-08-20",
+      "score": 8.2,
+      "status": "Favourable",
+      "nifty": 24231.849609375,
+      "vix": 10.755000114440918
     }
   ],
   "raw": {
-    "nifty_price": 24078.30078125,
-    "nifty_50dma": 24139.88296875,
-    "nifty_200dma": 24710.087041015624,
-    "mid_price": 18220.69921875,
-    "mid_50dma": 17893.7009765625,
-    "mid_200dma": 17146.24673828125,
-    "vix": 11.322500228881836,
+    "nifty_price": 24231.849609375,
+    "nifty_50dma": 24100.4709765625,
+    "nifty_200dma": 24727.21455078125,
+    "mid_price": 18300.650390625,
+    "mid_50dma": 17863.835,
+    "mid_200dma": 17135.022998046876,
+    "vix": 10.755000114440918,
     "fii_5d_approx": 2900
   }
 }
