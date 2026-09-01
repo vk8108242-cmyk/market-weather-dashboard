@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "31 August 2026 17:44 IST",
-  "dataAsOf": "31 August 2026",
+  "lastUpdated": "01 September 2026 15:15 IST",
+  "dataAsOf": "01 September 2026",
   "score": 7.4,
   "status": "Moderately Favourable",
   "interpretation": "Resilient mid-cap leadership, contained volatility and stabilising institutional flows produce a moderately constructive backdrop. Large-cap index still faces longer-term resistance below the 200-DMA; monitor the 24,500–24,700 zone closely.",
@@ -17,7 +17,7 @@
       "title": "Nifty 50 Trend (50 / 200 DMA)",
       "status": "Bearish",
       "statusClass": "negative",
-      "metrics": "Price 24,080.40  ·  50-DMA 24,209.54  ·  200-DMA 24,648.28",
+      "metrics": "Price 24,055.80  ·  50-DMA 24,207.14  ·  200-DMA 24,647.68",
       "description": "Below 50-DMA. Below 200-DMA. Death Cross active."
     },
     {
@@ -25,7 +25,7 @@
       "title": "Nifty Midcap 50 Trend",
       "status": "Strongly Positive",
       "statusClass": "positive",
-      "metrics": "Price 18,491.45  ·  50-DMA 18,046.64  ·  200-DMA 17,201.00",
+      "metrics": "Price 18,248.80  ·  50-DMA 18,043.50  ·  200-DMA 17,200.22",
       "description": "Above both key DMAs. Golden Cross intact."
     },
     {
@@ -122,15 +122,22 @@
       "status": "Moderately Favourable",
       "nifty": 24080.400390625,
       "vix": 11.1899995803833
+    },
+    {
+      "date": "2026-09-01",
+      "score": 7.4,
+      "status": "Moderately Favourable",
+      "nifty": 24055.80078125,
+      "vix": 11.1899995803833
     }
   ],
   "raw": {
-    "nifty_price": 24080.400390625,
-    "nifty_50dma": 24209.5390234375,
-    "nifty_200dma": 24648.2823046875,
-    "mid_price": 18491.44921875,
-    "mid_50dma": 18046.641953125,
-    "mid_200dma": 17201.002734375,
+    "nifty_price": 24055.80078125,
+    "nifty_50dma": 24207.14203125,
+    "nifty_200dma": 24647.683056640624,
+    "mid_price": 18248.80078125,
+    "mid_50dma": 18043.501953125,
+    "mid_200dma": 17200.217734375,
     "vix": 11.1899995803833,
     "fii_5d_approx": 2900
   }
