@@ -1,12 +1,12 @@
 {
-  "lastUpdated": "01 October 2026 17:10 IST",
+  "lastUpdated": "02 October 2026 16:23 IST",
   "dataAsOf": "01 October 2026",
   "score": 5.1,
   "status": "Neutral",
   "interpretation": "Resilient mid-cap leadership, contained volatility and stabilising institutional flows produce a moderately constructive backdrop. Large-cap index still faces longer-term resistance below the 200-DMA; monitor the 24,500–24,700 zone closely.",
   "takeaways": [
     "Mid-cap trend remains the strongest component",
-    "India VIX at 14.45 – supportive of risk appetite",
+    "India VIX at 14.46 – supportive of risk appetite",
     "Nifty 50 still below its 200-day moving average",
     "FII 5-day flow currently constructive (approximate)",
     "Key watch levels: 24,500 support / 24,700 resistance"
@@ -33,7 +33,7 @@
       "title": "India VIX Level",
       "status": "Neutral",
       "statusClass": "neutral",
-      "metrics": "Close 14.45",
+      "metrics": "Close 14.46",
       "description": "Low readings support risk-taking; sustained rise above 15–16 would turn neutral/cautious."
     },
     {
@@ -275,7 +275,7 @@
       "score": 5.1,
       "status": "Neutral",
       "nifty": 22421.94921875,
-      "vix": 14.454999923706055
+      "vix": 14.460000038146973
     }
   ],
   "raw": {
@@ -285,7 +285,7 @@
     "mid_price": 16840.349609375,
     "mid_50dma": 18002.8258984375,
     "mid_200dma": 17250.62298828125,
-    "vix": 14.454999923706055,
+    "vix": 14.460000038146973,
     "fii_5d_approx": 2900
   }
 }
