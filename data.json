@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "15 October 2026 15:22 IST",
-  "dataAsOf": "15 October 2026",
+  "lastUpdated": "16 October 2026 15:02 IST",
+  "dataAsOf": "16 October 2026",
   "score": 5.1,
   "status": "Neutral",
   "interpretation": "Resilient mid-cap leadership, contained volatility and stabilising institutional flows produce a moderately constructive backdrop. Large-cap index still faces longer-term resistance below the 200-DMA; monitor the 24,500–24,700 zone closely.",
@@ -17,7 +17,7 @@
       "title": "Nifty 50 Trend (50 / 200 DMA)",
       "status": "Bearish",
       "statusClass": "negative",
-      "metrics": "Price 22,997.35  ·  50-DMA 23,578.78  ·  200-DMA 24,205.90",
+      "metrics": "Price 23,146.15  ·  50-DMA 23,549.21  ·  200-DMA 24,190.75",
       "description": "Below 50-DMA. Below 200-DMA. Death Cross active."
     },
     {
@@ -25,7 +25,7 @@
       "title": "Nifty Midcap 50 Trend",
       "status": "Negative",
       "statusClass": "negative",
-      "metrics": "Price 16,956.30  ·  50-DMA 17,803.74  ·  200-DMA 17,240.41",
+      "metrics": "Price 16,946.30  ·  50-DMA 17,778.30  ·  200-DMA 17,238.15",
       "description": "Below both key DMAs. Golden Cross intact."
     },
     {
@@ -325,15 +325,22 @@
       "status": "Neutral",
       "nifty": 22997.349609375,
       "vix": 14.024999618530273
+    },
+    {
+      "date": "2026-10-16",
+      "score": 5.1,
+      "status": "Neutral",
+      "nifty": 23146.150390625,
+      "vix": 14.024999618530273
     }
   ],
   "raw": {
-    "nifty_price": 22997.349609375,
-    "nifty_50dma": 23578.776953125,
-    "nifty_200dma": 24205.90375,
-    "mid_price": 16956.30078125,
-    "mid_50dma": 17803.739921875,
-    "mid_200dma": 17240.412998046875,
+    "nifty_price": 23146.150390625,
+    "nifty_50dma": 23549.206953125,
+    "nifty_200dma": 24190.74875,
+    "mid_price": 16946.30078125,
+    "mid_50dma": 17778.296953125,
+    "mid_200dma": 17238.155,
     "vix": 14.024999618530273,
     "fii_5d_approx": 2900
   }
