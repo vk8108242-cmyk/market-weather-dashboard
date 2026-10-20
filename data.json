@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "19 October 2026 17:13 IST",
+  "lastUpdated": "20 October 2026 15:25 IST",
   "dataAsOf": "19 October 2026",
   "score": 5.1,
   "status": "Neutral",
@@ -338,7 +338,7 @@
       "score": 5.1,
       "status": "Neutral",
       "nifty": 22888.94921875,
-      "vix": 14.772500038146973
+      "vix": 14.770000457763672
     }
   ],
   "raw": {
@@ -348,7 +348,7 @@
     "mid_price": 16767.849609375,
     "mid_50dma": 17751.1489453125,
     "mid_200dma": 17235.047744140626,
-    "vix": 14.772500038146973,
+    "vix": 14.770000457763672,
     "fii_5d_approx": 2900
   }
 }
