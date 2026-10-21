@@ -1,12 +1,12 @@
 {
-  "lastUpdated": "20 October 2026 15:25 IST",
-  "dataAsOf": "19 October 2026",
+  "lastUpdated": "21 October 2026 15:41 IST",
+  "dataAsOf": "21 October 2026",
   "score": 5.1,
   "status": "Neutral",
   "interpretation": "Resilient mid-cap leadership, contained volatility and stabilising institutional flows produce a moderately constructive backdrop. Large-cap index still faces longer-term resistance below the 200-DMA; monitor the 24,500–24,700 zone closely.",
   "takeaways": [
     "Mid-cap trend remains the strongest component",
-    "India VIX at 14.77 – supportive of risk appetite",
+    "India VIX at 15.68 – supportive of risk appetite",
     "Nifty 50 still below its 200-day moving average",
     "FII 5-day flow currently constructive (approximate)",
     "Key watch levels: 24,500 support / 24,700 resistance"
@@ -17,7 +17,7 @@
       "title": "Nifty 50 Trend (50 / 200 DMA)",
       "status": "Bearish",
       "statusClass": "negative",
-      "metrics": "Price 22,888.95  ·  50-DMA 23,514.27  ·  200-DMA 24,174.48",
+      "metrics": "Price 22,811.35  ·  50-DMA 23,479.08  ·  200-DMA 24,158.33",
       "description": "Below 50-DMA. Below 200-DMA. Death Cross active."
     },
     {
@@ -25,7 +25,7 @@
       "title": "Nifty Midcap 50 Trend",
       "status": "Negative",
       "statusClass": "negative",
-      "metrics": "Price 16,767.85  ·  50-DMA 17,751.15  ·  200-DMA 17,235.05",
+      "metrics": "Price 16,500.20  ·  50-DMA 17,717.70  ·  200-DMA 17,231.31",
       "description": "Below both key DMAs. Golden Cross intact."
     },
     {
@@ -33,7 +33,7 @@
       "title": "India VIX Level",
       "status": "Neutral",
       "statusClass": "neutral",
-      "metrics": "Close 14.77",
+      "metrics": "Close 15.68",
       "description": "Low readings support risk-taking; sustained rise above 15–16 would turn neutral/cautious."
     },
     {
@@ -339,16 +339,23 @@
       "status": "Neutral",
       "nifty": 22888.94921875,
       "vix": 14.770000457763672
+    },
+    {
+      "date": "2026-10-21",
+      "score": 5.1,
+      "status": "Neutral",
+      "nifty": 22811.349609375,
+      "vix": 15.675000190734863
     }
   ],
   "raw": {
-    "nifty_price": 22888.94921875,
-    "nifty_50dma": 23514.2659375,
-    "nifty_200dma": 24174.482998046875,
-    "mid_price": 16767.849609375,
-    "mid_50dma": 17751.1489453125,
-    "mid_200dma": 17235.047744140626,
-    "vix": 14.770000457763672,
+    "nifty_price": 22811.349609375,
+    "nifty_50dma": 23479.079921875,
+    "nifty_200dma": 24158.3282421875,
+    "mid_price": 16500.19921875,
+    "mid_50dma": 17717.7009375,
+    "mid_200dma": 17231.307744140624,
+    "vix": 15.675000190734863,
     "fii_5d_approx": 2900
   }
 }
