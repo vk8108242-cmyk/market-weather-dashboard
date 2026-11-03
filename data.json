@@ -1,12 +1,12 @@
 {
-  "lastUpdated": "02 November 2026 20:32 IST",
-  "dataAsOf": "30 October 2026",
-  "score": 5.1,
-  "status": "Neutral",
+  "lastUpdated": "03 November 2026 18:06 IST",
+  "dataAsOf": "03 November 2026",
+  "score": 6.0,
+  "status": "Moderately Favourable",
   "interpretation": "Resilient mid-cap leadership, contained volatility and stabilising institutional flows produce a moderately constructive backdrop. Large-cap index still faces longer-term resistance below the 200-DMA; monitor the 24,500–24,700 zone closely.",
   "takeaways": [
     "Mid-cap trend remains the strongest component",
-    "India VIX at 15.30 – supportive of risk appetite",
+    "India VIX at 15.72 – supportive of risk appetite",
     "Nifty 50 still below its 200-day moving average",
     "FII 5-day flow currently constructive (approximate)",
     "Key watch levels: 24,500 support / 24,700 resistance"
@@ -15,17 +15,17 @@
     {
       "id": "nifty50",
       "title": "Nifty 50 Trend (50 / 200 DMA)",
-      "status": "Bearish",
-      "statusClass": "negative",
-      "metrics": "Price 23,053.10  ·  50-DMA 23,254.75  ·  200-DMA 24,041.15",
-      "description": "Below 50-DMA. Below 200-DMA. Death Cross active."
+      "status": "Neutral / Mild +",
+      "statusClass": "neutral",
+      "metrics": "Price 23,810.85  ·  50-DMA 23,233.58  ·  200-DMA 24,017.32",
+      "description": "Above 50-DMA. Below 200-DMA. Death Cross active."
     },
     {
       "id": "midcap",
       "title": "Nifty Midcap 50 Trend",
       "status": "Negative",
       "statusClass": "negative",
-      "metrics": "Price 16,513.30  ·  50-DMA 17,451.84  ·  200-DMA 17,200.18",
+      "metrics": "Price 16,908.30  ·  50-DMA 17,393.94  ·  200-DMA 17,194.56",
       "description": "Below both key DMAs. Golden Cross intact."
     },
     {
@@ -33,7 +33,7 @@
       "title": "India VIX Level",
       "status": "Neutral",
       "statusClass": "neutral",
-      "metrics": "Close 15.30",
+      "metrics": "Close 15.72",
       "description": "Low readings support risk-taking; sustained rise above 15–16 would turn neutral/cautious."
     },
     {
@@ -395,16 +395,23 @@
       "status": "Neutral",
       "nifty": 23053.099609375,
       "vix": 15.300000190734863
+    },
+    {
+      "date": "2026-11-03",
+      "score": 6.0,
+      "status": "Moderately Favourable",
+      "nifty": 23810.849609375,
+      "vix": 15.72249984741211
     }
   ],
   "raw": {
-    "nifty_price": 23053.099609375,
-    "nifty_50dma": 23254.74890625,
-    "nifty_200dma": 24041.151484375,
-    "mid_price": 16513.30078125,
-    "mid_50dma": 17451.84296875,
-    "mid_200dma": 17200.180244140625,
-    "vix": 15.300000190734863,
+    "nifty_price": 23810.849609375,
+    "nifty_50dma": 23233.57890625,
+    "nifty_200dma": 24017.32173828125,
+    "mid_price": 16908.30078125,
+    "mid_50dma": 17393.9359765625,
+    "mid_200dma": 17194.56125,
+    "vix": 15.72249984741211,
     "fii_5d_approx": 2900
   }
 }
