@@ -1,12 +1,12 @@
 {
-  "lastUpdated": "19 November 2026 19:13 IST",
-  "dataAsOf": "18 November 2026",
-  "score": 8.4,
-  "status": "Favourable",
+  "lastUpdated": "20 November 2026 18:53 IST",
+  "dataAsOf": "19 November 2026",
+  "score": 7.9,
+  "status": "Moderately Favourable",
   "interpretation": "Resilient mid-cap leadership, contained volatility and stabilising institutional flows produce a moderately constructive backdrop. Large-cap index still faces longer-term resistance below the 200-DMA; monitor the 24,500–24,700 zone closely.",
   "takeaways": [
     "Mid-cap trend remains the strongest component",
-    "India VIX at 15.57 – supportive of risk appetite",
+    "India VIX at 16.11 – supportive of risk appetite",
     "Nifty 50 still below its 200-day moving average",
     "FII 5-day flow currently constructive (approximate)",
     "Key watch levels: 24,500 support / 24,700 resistance"
@@ -17,7 +17,7 @@
       "title": "Nifty 50 Trend (50 / 200 DMA)",
       "status": "Bullish",
       "statusClass": "positive",
-      "metrics": "Price 25,227.95  ·  50-DMA 23,413.05  ·  200-DMA 23,993.81",
+      "metrics": "Price 25,514.30  ·  50-DMA 23,445.38  ·  200-DMA 23,995.50",
       "description": "Above 50-DMA. Above 200-DMA. Death Cross active."
     },
     {
@@ -25,15 +25,15 @@
       "title": "Nifty Midcap 50 Trend",
       "status": "Strongly Positive",
       "statusClass": "positive",
-      "metrics": "Price 17,583.65  ·  50-DMA 17,256.20  ·  200-DMA 17,233.20",
+      "metrics": "Price 17,756.15  ·  50-DMA 17,248.76  ·  200-DMA 17,239.82",
       "description": "Above both key DMAs. Golden Cross intact."
     },
     {
       "id": "vix",
       "title": "India VIX Level",
-      "status": "Neutral",
+      "status": "Elevated",
       "statusClass": "neutral",
-      "metrics": "Close 15.57",
+      "metrics": "Close 16.11",
       "description": "Low readings support risk-taking; sustained rise above 15–16 would turn neutral/cautious."
     },
     {
@@ -46,13 +46,6 @@
     }
   ],
   "history": [
-    {
-      "date": "2026-08-13",
-      "score": 8.2,
-      "status": "Favourable",
-      "nifty": 24395.849609375,
-      "vix": 11.417499542236328
-    },
     {
       "date": "2026-08-14",
       "score": 8.2,
@@ -465,16 +458,23 @@
       "status": "Favourable",
       "nifty": 25227.94921875,
       "vix": 15.569999694824219
+    },
+    {
+      "date": "2026-11-19",
+      "score": 7.9,
+      "status": "Moderately Favourable",
+      "nifty": 25514.30078125,
+      "vix": 16.110000610351562
     }
   ],
   "raw": {
-    "nifty_price": 25227.94921875,
-    "nifty_50dma": 23413.046875,
-    "nifty_200dma": 23993.809228515624,
-    "mid_price": 17583.650390625,
-    "mid_50dma": 17256.1959765625,
-    "mid_200dma": 17233.197490234375,
-    "vix": 15.569999694824219,
+    "nifty_price": 25514.30078125,
+    "nifty_50dma": 23445.37890625,
+    "nifty_200dma": 23995.50373046875,
+    "mid_price": 17756.150390625,
+    "mid_50dma": 17248.763984375,
+    "mid_200dma": 17239.821494140626,
+    "vix": 16.110000610351562,
     "fii_5d_approx": 2900
   }
 }
